@@ -26,3 +26,316 @@ batch_mode: 'truncate_episodes'
 lr: .0003
 
 ### result analysis
+
+slow:
+- solves train1: 126.95s
+- solves train2: 138.2s
+fails on obs
+
+
+## v1.1
+
+### changelog
+
+increased cp reward
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2 
+wps: 101 points ~ 3m apart
+cp radius: 2m
+cp reward: 0.5
+max_v: 12
+noise on obs: N(0, 0.03)
+obs dim: 110
+
+
+### trainig config
+
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+
+- solves train1: 82s
+- fails train2
+- fails on obs
+
+
+## v1.2
+
+### changelog
+
+only trained on train2
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2 
+wps: 101 points ~ 3m apart
+cp radius: 2m
+cp reward: 0.5
+max_v: 12
+noise on obs: N(0, 0.03)
+obs dim: 110
+
+
+### trainig config
+
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+
+- solves train2: 96s
+- solves obs: 93s
+- fails on train1
+
+
+## v1.3
+
+### changelog
+
+scan range to 15
+
+### environment configs
+
+scan range: 15m
+maps: ss train 1,2 
+wps: 101 points ~ 3m apart
+cp radius: 2m
+cp reward: 0.5
+max_v: 12
+noise on obs: N(0, 0.03)
+obs dim: 110
+
+
+### trainig config
+
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+
+awful!
+
+
+## v1.4
+
+### changelog
+
+reduced speed to 10
+no noise
+gamma increased
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2 
+wps: 101 points ~ 3m apart
+cp radius: 2m
+cp reward: 0.5
+max_v: 10
+obs dim: 110
+
+
+### trainig config
+
+gamma: 0.995
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0001
+
+### result analysis
+
+worked on train1,2
+fails on obs
+
+
+## v1.5
+
+### changelog
+
+reduced speed to 10
+add noise to obs
+gamma increased
+padding 15cm
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2 
+wps: 101 points ~ 3m apart
+cp radius: 3m
+cp reward: 0.1
+max_v: 10
+obs dim: 110
+
+
+### trainig config
+
+gamma: 0.995
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+
+Doesn't solve any!
+
+
+## v1.6
+
+### changelog
+
+padding 5cm
+added third training track
+added a reward for fast completion (exp(4-t/20)) -> 80s gets a reward of e 100s gets a reward of 1/e
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2,3
+wps: 101 points ~ 3m apart
+cp radius: 2m
+cp reward: 0.1
+max_v: 10
+obs dim: 110
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+padding: 5cm
+
+### result analysis
+
+gets stuck in train3
+solves all others
+
+## v1.7
+
+### changelog
+
+stopping and returning punishments
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2,3
+wps: 101 points ~ 3m apart
+cp radius: 2m
+cp reward: 0.1
+max_v: 10
+obs dim: 110
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+padding: 5cm
+
+### result analysis
+
+works on 1, 2
+fails on 3
+solves test sometimes!
+
+
+## v1.8
+
+### changelog
+
+less workers
+only train on 1,2
+trimmed obs to only look forward 70-290 deg
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2
+wps: 200 points 
+cp radius: 3m
+cp reward: 0.1
+max_v: 10
+obs dim: 220
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 16
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+padding: 5cm
+
+### result analysis
+
+solves all begining from start point
+
