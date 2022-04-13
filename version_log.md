@@ -455,3 +455,43 @@ lr: .0003
 ### result analysis
 
 can't solve all
+
+
+## v2.2
+
+### changelog
+
+more complex network
+
+### environment configs
+
+scan range: 10m
+maps: ss train 1,2,3
+wps: 200 points 
+cp radius: 3m
+cp reward: 0.1
+max_v: 12
+obs dim: 220
+padding: 30cm neg reward
+finish time reward: max(0.2*(50 - t), 0.1)
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+network: (300, 300, 300)
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 16
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+
+### result analysis
+
+solves all. a bit slower
