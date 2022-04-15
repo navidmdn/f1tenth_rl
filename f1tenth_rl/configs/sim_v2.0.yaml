@@ -1,0 +1,28 @@
+trainer:
+  framework: torch
+  num_workers: 15
+  gamma: 0.99
+  num_gpus: 1.0
+  kl_coeff: 1.0
+  clip_param: 0.2
+  model:
+    fcnet_hiddens: [300 300]
+  num_envs_per_worker: 1
+  train_batch_size: 100000
+  sgd_minibatch_size: 4096
+  batch_mode: truncate_episodes
+  lr: .0003
+
+env:
+  scan_range: 10.0
+  max_v: 12.0
+  n_cps: 200
+  cp_reward: 0.1
+  min_cp_dist: 3.0
+  maps_path: './maps'
+  train_map_name: 'SILVERSTONE_TRAIN'
+  safe_padding: 0.3
+  laps: 1.0
+  return_cp_dist: 3.0
+  num_cp_to_consider_return: 5
+  in_padding_punish: 0.05
