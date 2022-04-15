@@ -20,6 +20,7 @@ if __name__ == '__main__':
     with open(os.path.join('f1tenth_rl', 'configs', f"{args.config}.yaml"), 'r') as f:
         config = yaml.safe_load(f)
 
+    print(config['env'], config['trainer'])
     register_env("singleCarEnv", lambda cfg: F110RaceEnv(cfg, **config['env']))
     trainer = ppo.PPOTrainer(env='singleCarEnv', config=config['trainer'])
 
