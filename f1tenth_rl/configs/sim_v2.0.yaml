@@ -1,6 +1,6 @@
 trainer:
   framework: torch
-  num_workers: 1
+  num_workers: 15
   gamma: 0.99
   num_gpus: 1.0
   kl_coeff: 1.0
