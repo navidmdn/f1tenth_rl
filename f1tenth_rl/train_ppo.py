@@ -20,9 +20,7 @@ if __name__ == '__main__':
     with open(os.path.join('f1tenth_rl', 'configs', f"{args.config}.yaml"), 'r') as f:
         config = yaml.safe_load(f)
 
-    print(config['env'], config['trainer'])
-    register_env("singleCarEnv", lambda cfg: F110RaceEnv(cfg, **config['env']))
-    trainer = ppo.PPOTrainer(env='singleCarEnv', config=config['trainer'])
+    trainer = ppo.PPOTrainer(env=F110RaceEnv, config={'env_config': config['env'], **config['trainer']})
 
     # print("FINE TUNING")
     # trainer.restore('../checkpoints/v2.2/checkpoint_000031/checkpoint-31')
