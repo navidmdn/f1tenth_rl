@@ -15,7 +15,6 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', default="sim_v2.0", help='path to yaml config file')
     parser.add_argument('--epochs', default=100, help='number of epochs to train')
-    p
     args = parser.parse_args()
 
     with open(os.path.join('f1tenth_rl', 'configs', f"{args.config}.yaml"), 'r') as f:
