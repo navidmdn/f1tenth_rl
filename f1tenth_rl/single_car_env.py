@@ -1,7 +1,5 @@
 import gym
 import numpy as np
-import time
-import yaml
 from scipy.spatial.distance import cdist
 
 
