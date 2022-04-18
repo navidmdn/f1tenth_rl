@@ -531,3 +531,38 @@ lr: .0003
 
 
 ### result analysis
+
+
+
+## sim-v1.0
+
+
+### environment configs
+
+scan range: 10m
+maps: train 1
+wps: 100 points 
+cp radius: 3m
+cp reward: 0.1
+max_v: 12
+obs dim: 222
+obs range: 70 to 290
+padding: 30cm neg reward 0.05
+finish time reward:  
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
