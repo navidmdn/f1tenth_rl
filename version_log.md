@@ -726,3 +726,291 @@ lr: .0003
 
 ### result analysis
 
+
+
+## sim-v2.0.2
+
+### changelog
+3 maps in 2 directions
+trained with speed based checkpoints
+
+### environment configs
+
+scan range: 10m
+maps: train 1, train 2,3
+wps: 110 points 
+cp radius: 3m
+cp reward: velocity based
+max_v: 20
+obs dim: 202
+obs range: 80 to 280
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+solved 1 and 2 tests in 25, 27s
+empty map in 25s
+
+
+## race-v1.0.2
+
+### changelog
+two times fine tuning
+first time reward was cp time diffs
+second time more punishment to padding with wider range
+third time less punishment to padding 
+
+### environment configs
+
+scan range: 10m
+maps: train 1, train 2,3
+wps: 110 points 
+cp radius: 3m
+cp reward: velocity based
+max_v: 15
+obs dim: 180
+obs range: 90 to 270
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+fails at some tests but solves trains and is fast
+
+
+## race-v2.0.3
+
+### changelog
+An initial safe model for fine tuning its speed later
+
+
+### environment configs
+
+scan range: 10m
+maps: train 3 to 9
+wps: 110 points 
+cp radius: 3m
+cp reward: cp based
+max_v: 15
+obs dim: 180
+obs range: 90 to 270
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+pretty safe but slow
+
+
+## race-v2.0.4
+
+### changelog
+changed lidar view to 110 to 250
+
+
+### environment configs
+
+scan range: 10m
+maps: train 3 to 9
+wps: 110 points 
+cp radius: 3m
+cp reward: cp based
+max_v: 15
+obs dim: 142
+obs range: 110 to 250
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0003
+
+### result analysis
+fast and steady training
+lr to 0.0001
+
+
+## race-v2.0.5
+
+### changelog
+speed to 20
+
+### environment configs
+
+scan range: 10m
+maps: train 3 to 9
+wps: 110 points 
+cp radius: 3m
+cp reward: cp based
+max_v: 20
+obs dim: 142
+obs range: 110 to 250
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0001
+
+### result analysis
+faster and better reward
+
+
+## race-v2.0.6
+
+### changelog
+net to 300 300 100
+
+### environment configs
+
+scan range: 10m
+maps: train 3 to 9
+wps: 110 points 
+cp radius: 3m
+cp reward: cp based
+max_v: 20
+obs dim: 142
+obs range: 110 to 250
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0001
+
+### result analysis
+faster up until even 23.8s
+but fail a lot (maybe try less learning rate later)
+
+
+## race-v2.0.7
+
+### changelog
+increase range to 20m
+
+### environment configs
+
+scan range: 20m
+maps: train 3 to 9
+wps: 110 points 
+cp radius: 3m
+cp reward: cp based
+max_v: 20
+obs dim: 142
+obs range: 110 to 250
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0001
+
+### result analysis
+
+
+## race-v2.0.8
+
+### changelog
+same as2.0.5 only for 500 epoch 
+and net is 500 500
+
+### environment configs
+
+scan range: 10m
+maps: train 3 to 9
+wps: 110 points 
+cp radius: 3m
+cp reward: cp based
+max_v: 20
+obs dim: 142
+obs range: 110 to 250
+
+
+### trainig config
+
+gamma: 0.99
+alg: ppo
+num_workers: 15
+num_gpus: 1.0
+kl_coeff: 1.0
+clip_param: 0.2
+num_envs_per_worker: 1
+train_batch_size: 100000
+sgd_minibatch_siz': 4096
+batch_mode: 'truncate_episodes'
+lr: .0001
+
+### result analysis
