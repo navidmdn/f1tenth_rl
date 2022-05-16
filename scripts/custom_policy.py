@@ -13,7 +13,7 @@ class Policy(torch.nn.Module):
             torch.nn.Linear(in_features=256, out_features=256, bias=True),
             torch.nn.Tanh()
         )
-        self.logits =  torch.nn.Sequential(
+        self.logits = torch.nn.Sequential(
             torch.nn.Linear(in_features=256, out_features=4, bias=True),
         )
         
