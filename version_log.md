@@ -1014,3 +1014,9 @@ batch_mode: 'truncate_episodes'
 lr: .0001
 
 ### result analysis
+
+
+candidates:
+v3.1.0
+v3.0.3
+v3.0.4
