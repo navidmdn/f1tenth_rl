@@ -44,7 +44,7 @@ class F110RaceEnv(gym.Env):
 
         self.laps = laps
         self.maps_path = maps_path
-        self.observation_space = gym.spaces.Box(low=-np.inf, high=np.inf, shape=(182,), dtype=np.float32)
+        self.observation_space = gym.spaces.Box(low=-np.inf, high=np.inf, shape=(142,), dtype=np.float32)
         self.max_v = max_v
         self.test_map_name = test_map_name
         self.min_cp_dist = min_cp_dist

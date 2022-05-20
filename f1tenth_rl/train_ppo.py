@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--config', default="single_car", help='path to yaml config file')
-    parser.add_argument('--epochs', default=200, help='number of epochs to train')
+    parser.add_argument('--epochs', default=200, type=int, help='number of epochs to train')
     parser.add_argument('--verbose', default=5, help='number of epochs to train')
     parser.add_argument('--logname', default="ppo_single_car", help='number of epochs to train')
 

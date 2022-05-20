@@ -156,10 +156,10 @@ if __name__ == '__main__':
     """
 
     done = False
-    map_name = 'race2'
-    env = WPEnv(map_name=map_name, begin_pos=[0.0702245, 0.3002981, 2.79787])
+    map_name = 'phy1'
+    env = WPEnv(map_name=map_name, begin_pos=[-3.0702245, -1.3002981, 2.79787])
     obs = env.reset()
-    agent = FGAgent(speed=3.0, bubble_r=0.5)
+    agent = FGAgent(speed=3.0, bubble_r=1.0, lookahead_degrees=[45, 315])
 
     positions = []
 
@@ -169,6 +169,6 @@ if __name__ == '__main__':
         obs, r, done, _ = env.step([th, v])
         env.render()
 
-    path = os.path.join(pathlib.Path(__file__).parent.parent.resolve(), 'maps', f"{map_name}-wp.np'")
+    path = os.path.join(pathlib.Path(__file__).parent.parent.resolve(), 'maps', f"{map_name}-wp.np")
     with open(path, 'wb') as f:
         np.save(f, positions)
