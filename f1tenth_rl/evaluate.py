@@ -10,19 +10,18 @@ if __name__ == '__main__':
     evaluation_config = {
         'framework': 'torch',
         'model': {
-            'fcnet_hiddens': [300, 300]
+            'fcnet_hiddens': [500, 500]
         },
-        'observation_space': gym.spaces.Box(low=-np.inf, high=np.inf, shape=(142,), dtype=np.float32),
+        'observation_space': gym.spaces.Box(low=-np.inf, high=np.inf, shape=(272,), dtype=np.float32),
         'action_space': gym.spaces.Box(low=-1, high=1, shape=(2,), dtype=np.float32)
     }
 
     cp_path = os.path.join(pathlib.Path(__file__).parent.parent.resolve(), 'checkpoints',
-                           "race_v2.0.4/checkpoint_000281/checkpoint-281")
+                           "phy_v6.0.1/checkpoint_000166/checkpoint-166")
     agent = ppo.PPOTrainer(config=evaluation_config)
     agent.restore(cp_path)
-
     done = False
-    env = F110RaceEnv({}, test_map_name='Oschersleben2', laps=1)
+    env = F110RaceEnv({}, test_map_name='phy3', laps=2, begin_pos=[-3.0702245, -2.3002981, 2.79787])
     obs = env.reset()
 
     r = 0

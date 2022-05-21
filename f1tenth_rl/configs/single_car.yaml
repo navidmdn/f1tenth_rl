@@ -8,7 +8,7 @@ trainer:
   model:
     fcnet_hiddens: [300, 300]
   num_envs_per_worker: 1
-  train_batch_size: 100000
-  sgd_minibatch_size: 4096
+  train_batch_size: 20000
+  sgd_minibatch_size: 2048
   batch_mode: truncate_episodes
   lr: .0003
