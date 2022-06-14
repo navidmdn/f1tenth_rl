@@ -36,24 +36,24 @@ So, lets assume we want to train an agent on `Oschersleben` map. This is a famou
 virtual racing competition. You can find the png file in `maps/Oschersleben.png`:
 
 <p align="center">
-!<img src="maps/Oschersleben.png" alt="Oschersleben Map" width="400"/>
+<img src="maps/Oschersleben.png" alt="Oschersleben Map" width="400"/>
 </p>
 
 In order to build multiple tracks with different obstacles, I simply used linux's GIMP software and drew multiple challenging
 obstacles on the map. For instance, I'm gonna walk you through training the agent using these three maps:
 
 <p align="center">
-!<img src="maps/Oschersleben1.png" alt="Oschersleben 1 Map" width="400"/>
+<img src="maps/Oschersleben1.png" alt="Oschersleben 1 Map" width="400"/>
 </p>
 
 
 <p align="center">
-!<img src="maps/Oschersleben2.png" alt="Oschersleben 2 Map" width="400"/>
+<img src="maps/Oschersleben2.png" alt="Oschersleben 2 Map" width="400"/>
 </p>
 
 
 <p align="center">
-!<img src="maps/Oschersleben3.png" alt="Oschersleben 3 Map" width="400"/>
+<img src="maps/Oschersleben3.png" alt="Oschersleben 3 Map" width="400"/>
 </p>
 
 ### defining state, action and reward
